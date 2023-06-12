@@ -1,1 +1,1 @@
-# LMS
+# library-management-system

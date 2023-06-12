@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2021 at 05:28 PM
+-- Generation Time: Jun 25, 2022 at 04:16 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -66,8 +66,9 @@ CREATE TABLE `book` (
 
 INSERT INTO `book` (`id`, `bookpic`, `bookname`, `bookdetail`, `bookaudor`, `bookpub`, `branch`, `bookprice`, `bookquantity`, `bookava`, `bookrent`) VALUES
 (4, 'arrow.jpg', 'Scott Gallagher', '1st edition', 'no idea', 'Suscipit', 'it', '756', '20', 16, 4),
-(5, 'logo.png', 'Ferris Mclaughlin', 'Qui ex dolor fugiat ', 'Est voluptates offi', 'Dolorem earum accusa', 'electrical', '264', '157', 157, 0),
-(6, 'arrow.png', 'harry', 'Ea quas nulla ration', 'Ut dolorem culpa ex', 'Eum proident quidem', 'it', '76', '3', 2, 1);
+(5, 'logo.png', 'Ferris Mclaughlin', 'Qui ex dolor fugiat ', 'Est voluptates offi', 'Dolorem earum accusa', 'electrical', '264', '157', 156, 1),
+(6, 'arrow.png', 'harry', 'Ea quas nulla ration', 'Ut dolorem culpa ex', 'Eum proident quidem', 'it', '76', '3', 2, 1),
+(7, 'Fantastic.png', '2022 Latest Book', 'new book with latest features ', 'Mr developer', 'null', 'BSCS', '3000', '20', 19, 1);
 
 -- --------------------------------------------------------
 
@@ -92,12 +93,14 @@ CREATE TABLE `issuebook` (
 --
 
 INSERT INTO `issuebook` (`id`, `userid`, `issuename`, `issuebook`, `issuetype`, `issuedays`, `issuedate`, `issuereturn`, `fine`) VALUES
-(2, 1, 'salman', 'Rich daddy poor dady', 'student', 3, '30/03/2021', '02/04/2021', 1800),
+(2, 1, 'salman', 'Rich daddy poor dady', 'student', 3, '30/03/2021', '02/04/2021', 0),
 (3, 2, 'Randall Burch', 'Scott Gallagher', 'teacher', 4, '30/03/2021', '03/04/2021', 0),
-(6, 1, 'salman', 'Scott Gallagher', 'student', 7, '30/03/2021', '06/04/2021', 1800),
+(6, 1, 'salman', 'Scott Gallagher', 'student', 7, '30/03/2021', '06/04/2021', 0),
 (9, 5, 'salmannew', 'Scott Gallagher', 'teacher', 21, '30/03/2021', '20/04/2021', 0),
 (10, 1, 'salman', 'Scott Gallagher', 'student', 7, '01/04/2021', '08/04/2021', 0),
-(11, 1, 'salman', 'harry', 'student', 7, '01/04/2021', '08/04/2021', 0);
+(11, 1, 'salman', 'harry', 'student', 7, '01/04/2021', '08/04/2021', 0),
+(12, 6, 'Saif', '2022 Latest Book', 'teacher', 21, '12/06/2022', '03/07/2022', 0),
+(13, 6, 'Saif', 'Ferris Mclaughlin', 'teacher', 2, '12/06/2022', '14/06/2022', 0);
 
 -- --------------------------------------------------------
 
@@ -114,6 +117,13 @@ CREATE TABLE `requestbook` (
   `bookname` varchar(25) NOT NULL,
   `issuedays` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `requestbook`
+--
+
+INSERT INTO `requestbook` (`id`, `userid`, `bookid`, `username`, `usertype`, `bookname`, `issuedays`) VALUES
+(7, 1, 4, 'salman', 'student', 'Scott Gallagher', '7');
 
 -- --------------------------------------------------------
 
@@ -137,7 +147,8 @@ INSERT INTO `userdata` (`id`, `name`, `email`, `pass`, `type`) VALUES
 (1, 'salman', 'idno22382@gmail.com', '123', 'student'),
 (2, 'Randall Burch', 'voqo@mailinator.com', 'Ratione nulla dolore', 'teacher'),
 (3, 'Gabriel Daugherty', 'bipacer@mailinator.com', 'Voluptas explicabo ', 'teacher'),
-(5, 'salmannew', '1234@gmail.com', '123', 'teacher');
+(5, 'salmannew', '1234@gmail.com', '123', 'teacher'),
+(6, 'Saif', 'saif@gmail.com', '123', 'teacher');
 
 --
 -- Indexes for dumped tables
@@ -190,25 +201,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `issuebook`
 --
 ALTER TABLE `issuebook`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `requestbook`
 --
 ALTER TABLE `requestbook`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `userdata`
 --
 ALTER TABLE `userdata`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
